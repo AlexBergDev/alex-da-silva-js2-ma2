@@ -25,7 +25,7 @@ function createList() {
     listContainer.innerHTML = "";
 
     listItems.forEach(function (item) {
-        listContainer.innerHTML += `<li><span>${item.isbn}</span> <span>${item.title}</span> <i class="fa fa-trash" data-item="${item}"></li</li>`;
+        listContainer.innerHTML += `<li>ISBN: <span>${item.isbn}</span> Title: <span>${item.title}</span> <i class="fa fa-trash" data-item="${item}"></li</li>`;
     });
 
     const trashCans = document.querySelectorAll("li i");
