@@ -1,4 +1,6 @@
-let listItems = [
+import { emptyList } from "./constants/messages.js"
+
+let books = [
     {
         isbn: "1600506460320",
         title: "Great book",
@@ -17,36 +19,42 @@ let listItems = [
     },
 ];
 
-createList();
+createBooks();
 
-function createList() {
-    const listContainer = document.querySelector("ul");
+function createBooks() {
+    const bookContainer = document.querySelector("ul");
 
-    listContainer.innerHTML = "";
+    bookContainer.innerHTML = "";
 
-    listItems.forEach(function (item) {
-        listContainer.innerHTML += `<li>ISBN: <span>${item.isbn}</span> Title: <span>${item.title}</span> <i class="fa fa-trash" data-item="${item}"></li</li>`;
+    if (books.length === 0) {
+        bookContainer.innerHTML = emptyList;
+    }
+
+    books.forEach(function (book) {
+        bookContainer.innerHTML += `<li>ISBN: <span>${book.isbn}</span> 
+                                        Title: <span>${book.title}</span> 
+                                        <i class="fas fa-times" 
+                                        data-item="${book.isbn}"></li>`;
     });
 
-    const trashCans = document.querySelectorAll("li i");
+    const removeIcon = document.querySelectorAll("li i");
 
-    trashCans.forEach(function (can) {
-        can.addEventListener("click", removeFromList);
+    removeIcon.forEach(function (remove) {
+        remove.addEventListener("click", removeBook);
     });
 }
 
-function removeFromList() {
-    console.log(event);
+function removeBook() {
 
-    const deleteThisItem = event.target.dataset.item;
+    const bookToDelete = event.target.dataset.item;
 
-    const newList = listItems.filter(function (item) {
-        if (deleteThisItem !== item) {
+    const UpdatedArray = books.filter(function (book) {
+        if (bookToDelete !== book.isbn) {
             return true;
         }
     });
 
-    listItems = newList;
+    books = UpdatedArray;
 
-    createList();
+    createBooks();
 }
