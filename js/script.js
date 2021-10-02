@@ -34,7 +34,7 @@ function createBooks() {
         bookContainer.innerHTML += `<li>ISBN: <span>${book.isbn}</span> 
                                         Title: <span>${book.title}</span> 
                                         <i class="fas fa-times" 
-                                        data-item="${book.isbn}"></li>`;
+                                        data-book="${book.isbn}"></li>`;
     });
 
     const removeIcon = document.querySelectorAll("li i");
@@ -46,7 +46,7 @@ function createBooks() {
 
 function removeBook() {
 
-    const bookToDelete = event.target.dataset.item;
+    const bookToDelete = event.target.dataset.book;
 
     const UpdatedArray = books.filter(function (book) {
         if (bookToDelete !== book.isbn) {
