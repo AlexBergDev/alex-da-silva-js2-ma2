@@ -13,10 +13,6 @@ body {
   margin: 20px auto;
 }
 
-.complete {
-  text-decoration: line-through;
-}
-
 ul {
   list-style-type: none;
   padding: 0;
